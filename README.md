@@ -1,5 +1,4 @@
-# algorithm
-Algorithm Notes 
+#Algorithm Notes 
 Mainly in Golang
 
 
