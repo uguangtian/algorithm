@@ -3,33 +3,25 @@ package main
 import "fmt"
 
 func main() {
-	data := []int{9, 7, 8}
-	for i := 0; i < len(data); i++ {
-		fmt.Print(data[i], " ")
-	}
+	fmt.Println("Runing")
+	data := []int{2, 8, 22, 144, 222}
+	index := binarySearch(data, 222)
+	fmt.Println(index)
 }
 
-func binaryInsertSort(data []int) {
-	var key, i, j, low, high, mid int
-	for i = 1; i < len(data); i++ {
-		_ = "breakpoint"
-		if data[i] < data[i-1] {
-			low = 0
-			high = i - 1
-			key = data[i]
-			for low <= high {
-				mid = (low + high) / 2
-				if key < data[mid] {
-					high = mid - 1
-				} else {
-					low = mid + 1
-				}
-			}
-			for j = i; j > high+1; j-- {
-				data[j] = data[j-1]
-			}
-			data[high+1] = key
-
+func binarySearch(data []int, goal int) int {
+	low := 0
+	high := len(data) - 1
+	for low <= high {
+		middle := low + ((high - low) >> 1)
+		if goal == data[middle] {
+			return middle
+		} else if goal < data[middle] {
+			high = middle - 1
+		} else {
+			low = middle + 1
 		}
+		return -1
 	}
+	return 0
 }
